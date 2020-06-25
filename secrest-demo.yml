@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: secrets-demo
-  namespace: demo
+  namespace: demo2
 type: Opaque
 data:
   ENV_1: Rmlyc3RTZWNyZXQ=
