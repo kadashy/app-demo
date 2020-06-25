@@ -24,7 +24,12 @@ spec:
                 secretKeyRef:
                   name: secrets-demo
                   key: ENV_1
-          image: 'kadashyx/app-demo:latest'
+            - name: ENV_2
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-demo
+                  key: ENV_2
+          image: 'kadashy/app-demo:latest'
           name: app-demo
           ports:
             - containerPort: 5000
