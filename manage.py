@@ -6,8 +6,10 @@
 __version__ = "0.0.1"
 __author__ = "Andres Restrepo <andres.e.restrepo.a@gmail.com>"
 
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import reqparse, abort, Api, Resource, request
 from flask import Flask
+from mpmath import mp
+
 import os
 import logging
 
@@ -33,10 +35,20 @@ class RunTimeError(Resource):
     def get(self):
         os._exit(0)
 
+class PiCalc(Resource):
+    def get(self):
+        pinumbers = request.args.get('pinumbers','1')
+        mp.dps = pinumbers
+        status = {'status': 'up', 'PiCalc':str(mp.pi)}, 200
+        logging.debug(status, extra={'site': 'SOCL'})
+        return status
+
 api.add_resource(Healthy, "/probe/healthy")
 api.add_resource(UnHealthy, "/probe/unhealthy")
 api.add_resource(RunTimeError, "/probe/error")
+api.add_resource(PiCalc, "/probe/pi")
+
 
 if __name__ == '__main__':
     logging.info("App demo started")
-    app.run()
+    app.run(host='0.0.0.0')
