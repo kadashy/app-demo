@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app-demo
+  name: app-demo
+  namespace: austral
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-demo
+  template:
+    metadata:
+      labels:
+        app: app-demo
+    spec:
+      containers:
+        - env:
+            - name: ENVIRONMENT
+              value: test
+            - name: ENV_1
+              valueFrom:
+                secretKeyRef:
+                  name: secrets-demo
+                  key: ENV_1
+          image: 'kadashyx/app-demo:latest'
+          name: app-demo
+          ports:
+            - containerPort: 5000
+              name: "http"
+              protocol: "TCP"
+          livenessProbe:
+            httpGet:
+              path: /probe/healthy
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 5
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "250"
+            requests:
+              cpu: "50m"
+              memory: "100Mi"
