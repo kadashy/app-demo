@@ -4,7 +4,7 @@ metadata:
   labels:
     app: app-demo
   name: app-demo
-  namespace: austral
+  namespace: demo
 spec:
   replicas: 1
   selector:
@@ -44,7 +44,7 @@ spec:
           resources:
             limits:
               cpu: "100m"
-              memory: "250"
+              memory: "250Mi"
             requests:
               cpu: "50m"
               memory: "100Mi"
