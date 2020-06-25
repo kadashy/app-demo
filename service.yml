@@ -11,4 +11,4 @@ spec:
       port: 8080
   selector:
     app: "app-demo"
-  type: "ClusterIP"
+  type: "loadBalancer"
