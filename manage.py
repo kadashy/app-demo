@@ -51,4 +51,4 @@ api.add_resource(PiCalc, "/probe/pi")
 
 if __name__ == '__main__':
     logging.info("App demo started")
-    app.run()
+    app.run(host='0.0.0.0')
