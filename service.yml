@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
     - protocol: "TCP"
-      port: 8080
+      port: 5000
   selector:
     app: "app-demo"
-  type: "loadBalancer"
+  type: "LoadBalancer"
