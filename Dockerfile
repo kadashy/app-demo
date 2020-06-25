@@ -10,7 +10,7 @@ COPY . /usr/src/app
 
 # For Django
 EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py"]
 
 # For some other command
 # CMD ["python", "app.py"]
