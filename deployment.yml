@@ -4,7 +4,6 @@ metadata:
   labels:
     app: app-demo
   name: app-demo
-  namespace: demo2
 spec:
   replicas: 1
   selector:
@@ -48,3 +47,13 @@ spec:
             requests:
               cpu: "50m"
               memory: "100Mi"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secrets-demo
+type: Opaque
+data:
+  ENV_1: Rmlyc3RTZWNyZXQ=
+  ENV_2: U2Vjb25kU2VjcmV0
+  ENV_3: VGhpcmRTZWNyZXQ=
