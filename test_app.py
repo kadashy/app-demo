@@ -1,5 +1,5 @@
 import json
-from app import app
+from manage import app
 
 def test_probe_healthy():
     client = app.test_client()
