@@ -57,3 +57,17 @@ data:
   ENV_1: Rmlyc3RTZWNyZXQ=
   ENV_2: U2Vjb25kU2VjcmV0
   ENV_3: VGhpcmRTZWNyZXQ=
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "app-demo"
+  labels:
+    app: "app-demo"
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 5000
+  selector:
+    app: "app-demo"
+  type: "LoadBalancer"
