@@ -30,16 +30,26 @@ _Response:_
 ### /probe/unhealthy
 
 `curl http://localhost:5000/probe/unhealthy`
+
 _Response:_
+
 `{"status": "down"}`
 
 
+### /probe/error
 
-## Calculate numbers of pi
 
-get
+_Note:_ This route does not return an HTTP response, as the application shuts down with an exit code of 0.
 
-/probe/pi
+### /probe/pi
+
+`curl http://localhost:5000/probe/pi?pinumbers=5`
+
+_Response:_
+
+`{"status": "up", "PiCalc": "3.1416"}`
+
+## Run app on Docker
 
 docker run -d --name app-demo -p 5000:5000 \
            -e ENV_1=FirstSecret \
