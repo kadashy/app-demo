@@ -49,9 +49,14 @@ _Response:_
 
 `{"status": "up", "PiCalc": "3.1416"}`
 
+## Run on Kubernetes
+`kubectl apply -f https://raw.githubusercontent.com/kadashy/app-demo/master/deployment.yml`
+
 ## Run app on Docker
 
+```
 docker run -d --name app-demo -p 5000:5000 \
            -e ENV_1=FirstSecret \
            -e ENV_1=SecondSecret \
            kadashy/app-demo:latest
+```
